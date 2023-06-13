@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Haebot</title>
+    <title>Fast Print</title>
 
     <?= $this->include('MyLayout/css') ?>
 </head>
@@ -18,8 +18,8 @@
     <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #0C5BC6;">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="<?= site_url('/beranda') ?>">
-            <img src="<?= base_url('assets/logo/logo-haebot.jpeg') ?>" class="rounded-circle me-2" width="19%" alt="logo">
-            <b> Haebot Store </b>
+            <img src="<?= base_url('assets/logo/fastprint.jpeg') ?>" class="rounded-circle me-2" width="19%" alt="logo">
+            <b> Fast Print </b>
         </a>
 
         <!-- Sidebar Toggle-->
@@ -54,7 +54,7 @@
             <footer class="py-2 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Haebot Store 2023</div>
+                        <div class="text-muted">Copyright &copy; Fast Print 2023</div>
                     </div>
                 </div>
             </footer>
