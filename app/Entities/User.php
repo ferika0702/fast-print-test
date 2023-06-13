@@ -1,15 +1,13 @@
 <?php
 
-namespace Myth\Auth\Entities;
+namespace App\Entities;
 
 use CodeIgniter\Entity\Entity;
 use Exception;
-use Myth\Auth\Authorization\GroupModel;
-use Myth\Auth\Authorization\PermissionModel;
 use Myth\Auth\Password;
 use RuntimeException;
 
-class User extends Entity
+class User extends \Myth\Auth\Entities\User
 {
     /**
      * Maps names used in sets and gets against unique

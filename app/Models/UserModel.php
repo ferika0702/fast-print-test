@@ -5,7 +5,7 @@ namespace Myth\Auth\Models;
 use CodeIgniter\Model;
 use Faker\Generator;
 use Myth\Auth\Authorization\GroupModel;
-use Myth\Auth\Entities\User;
+use App\Entities\User;
 
 /**
  * @method User|null first()
@@ -14,7 +14,7 @@ class UserModel extends Model
 {
     protected $table          = 'users';
     protected $primaryKey     = 'id';
-    protected $returnType     = User::class;
+    protected $returnType     = 'App\Entities\User';
     protected $useSoftDeletes = true;
     protected $allowedFields  = [
         'email', 'username', 'password_hash', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',
