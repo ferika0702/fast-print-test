@@ -12,9 +12,9 @@ class UserSeeder extends Seeder
     {
         $users = new UserModel();
         $users->insert([
-            'username' => 'tesprogrammer130623C16',
+            'username' => 'ferika',
             'email' => 'ferikaputra07@gmail.com',
-            'password_hash' => Password::hash('bisacoding-13-06-23'),
+            'password_hash' => Password::hash('ferika'),
             'active' => 1
         ]);
     }

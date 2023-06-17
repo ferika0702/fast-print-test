@@ -1,6 +1,6 @@
 <?php
 
-namespace Myth\Auth\Filters;
+namespace App\Filters;
 
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RedirectResponse;

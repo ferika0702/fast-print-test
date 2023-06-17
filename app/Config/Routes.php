@@ -32,7 +32,12 @@ $routes->set404Override();
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'AuthController::login');
 
-$routes->get('/dashboard', 'DashboardController::index');
+
+$routes->group('', ['filter' => 'isLoggedIn'], function ($routes) {
+    $routes->get('/dashboard', 'DashboardController::index');
+    $routes->resource('produk');
+    $routes->get('/test', 'Test::index');
+});
 
 //     $routes->group('', ['filter' => 'isLoggedIn'], function ($routes) {
     

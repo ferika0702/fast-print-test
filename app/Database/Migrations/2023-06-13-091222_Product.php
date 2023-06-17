@@ -22,14 +22,17 @@ class Product extends Migration
             'harga' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
+                'unsigned'       => true,
             ],
             'kategori' => [
                 'type' => 'VARCHAR',
                 'constraint'     => 10,
+                'null'=>true
             ],
             'status' => [
                 'type' => 'VARCHAR',
                 'constraint' => 11,
+                'null'=> true
             ],
         ]);
         $this->forge->addKey('id_produk', true);
