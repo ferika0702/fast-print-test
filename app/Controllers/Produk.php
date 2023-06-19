@@ -13,20 +13,21 @@ class Produk extends ResourceController
      *
      * @return mixed
      */
+    
     // public function index()
     // {
-    //     $client = new Client();
+    //     $modelProduk = new ProdukModel();
+    //     $produk = $modelProduk->findAll();
 
-    //     $response = $client->request('POST', 'https://recruitment.fastprint.co.id/tes/api_tes_programmer');
+    //     $data = [
+    //         'produk' => $produk
+    //     ];
+    //     // $apiUrl = 'https://recruitment.fastprint.co.id/tes/api_tes_programmer';
+    //     // $data = json_decode(file_get_contents($apiUrl));
 
-    //     if ($response->getStatusCode() === 200) {
-    //         $data = $response->getBody();
-    //         // var_dump($data);
-    //         // return view('produk/index', $data);
-    //     } else {
-    //         // Handle error
-    //     }
+    //     return view('produk/index', $data);
     // }
+
     public function index()
     {
         $modelProduk = new ProdukModel();
@@ -35,10 +36,47 @@ class Produk extends ResourceController
         $data = [
             'produk' => $produk
         ];
-        // $apiUrl = 'https://recruitment.fastprint.co.id/tes/api_tes_programmer';
-        // $data = json_decode(file_get_contents($apiUrl));
 
         return view('produk/index', $data);
+    }
+
+    private function getDataFromApi($apiUrl)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+            CURLOPT_URL => $apiUrl,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_SSL_VERIFYPEER => false
+        ]);
+
+        $response = curl_exec($curl);
+        $error = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($error) {
+            die('Error: ' . $error);
+        }
+
+        $data = json_decode($response, true);
+
+        return $data;
+    }
+
+    public function getProduk(){
+        $apiUrl = 'https://recruitment.fastprint.co.id/tes/api_tes_programmer';
+        $data = $this->getDataFromApi($apiUrl);
+
+        $viewData = [
+            'produk' => $data
+        ];
+
+        // var_dump($viewData);
+
+        return view('produk/data-produk', $viewData);
     }
 
     /**
@@ -97,18 +135,18 @@ class Produk extends ResourceController
                         'numeric'   => 'Harus diisi angka'
                     ]
                 ],
-                // 'kategori'  => [
-                //     'rules'  => 'required',
-                //     'errors' => [
-                //         'required'  => 'Kategori beli harus diisi.',
-                //     ]
-                // ],
-                // 'status'  => [
-                //     'rules'  => 'required',
-                //     'errors' => [
-                //         'required'  => 'status beli harus diisi.',
-                //     ]
-                // ],
+                'kategori'  => [
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required'  => 'Kategori harus diisi.',
+                    ]
+                ],
+                'status'  => [
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required'  => 'status harus diisi.',
+                    ]
+                ],
             ];
 
             if (!$this->validate($validasi)) {
@@ -117,8 +155,8 @@ class Produk extends ResourceController
                 $error = [
                     'error_nama_produk' => $validation->getError('nama_produk'),
                     'error_harga'          =>$validation->getError('harga'),
-                    // 'error_kategori'  => $validation->getError('kategori'),    
-                    // 'error_status'  => $validation->getError('status')  
+                    'error_kategori'  => $validation->getError('kategori'),    
+                    'error_status'  => $validation->getError('status')  
                 ];
 
                 $json = [
@@ -193,6 +231,18 @@ class Produk extends ResourceController
                         'numeric'   => 'Harus diisi angka'
                     ]
                 ],
+                'kategori'  => [
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required'  => 'Kategori harus diisi.',
+                    ]
+                ],
+                'status'  => [
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required'  => 'status harus diisi.',
+                    ]
+                ],
             ];
 
             if (!$this->validate($validasi)) {
@@ -200,7 +250,9 @@ class Produk extends ResourceController
 
                 $error = [
                     'error_nama_produk' => $validation->getError('nama_produk'),
-                    'error_harga'          =>$validation->getError('harga'), 
+                    'error_harga'          =>$validation->getError('harga'),
+                    'error_kategori'  => $validation->getError('kategori'),    
+                    'error_status'  => $validation->getError('status')  
                 ];
 
                 $json = [

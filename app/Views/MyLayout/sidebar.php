@@ -9,12 +9,18 @@
                         </div>
                         Dashboard
                     </a>
-                    <a class="nav-link" href="<?= base_url() ?>/produk">
-                        <div class="sb-nav-link-icon">
-                            <i class="fa-fw fa-brands fa-product-hunt"></i>
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="produkDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fa-fw fa-brands fa-product-hunt"></i>
+                                </div>
+                                Produk
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="produkDropdown">
+                                <a class="dropdown-item" href="<?= base_url() ?>/produk">Produk</a>
+                                <a class="dropdown-item" href="<?= base_url() ?>/data-produk">Data Produk</a>
+                            </div>
                         </div>
-                        Produk
-                    </a>
             </div>
         </div>
         <div class="sb-sidenav-footer py-1">

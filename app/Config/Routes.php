@@ -36,6 +36,7 @@ $routes->get('/', 'AuthController::login');
 $routes->group('', ['filter' => 'isLoggedIn'], function ($routes) {
     $routes->get('/dashboard', 'DashboardController::index');
     $routes->resource('produk');
+    $routes->get('/data-produk','Produk::getProduk');
     $routes->get('/test', 'Test::index');
 });
 

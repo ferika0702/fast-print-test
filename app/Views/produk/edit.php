@@ -21,18 +21,22 @@
     </div>
 
     <div class="row mb-3">
-        <label for="kategori" class="col-sm-4 col-form-label">Kategori</label>
+        <label for="status" class="col-sm-4 col-form-label">status</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control" id="kategori" name="kategori" value="<?= $produk['kategori']; ?>" autofocus >
-            <div class="invalid-feedback error-kategori"></div>
+            <select class="form-control" name="status" id="status">
+                <option value="<?= $produk['status']; ?>"><?= $produk['status']; ?></option>
+                <option value="bisa dijual">Bisa Dijual</option>
+                <option value="tidak bisa dijual">Tidak Bisa Dijual</option>
+            </select>
+            <div class="invalid-feedback error-status"></div>
         </div>
     </div>
 
     <div class="row mb-3">
-        <label for="status" class="col-sm-4 col-form-label">status</label>
+        <label for="kategori" class="col-sm-4 col-form-label">Kategori</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control" id="status" name="status" value="<?= $produk['status']; ?>" autofocus >
-            <div class="invalid-feedback error-status"></div>
+            <input type="text" class="form-control" id="kategori" name="kategori" value="<?= $produk['kategori']; ?>" autofocus>
+            <div class="invalid-feedback error-kategori"></div>
         </div>
     </div>
 
@@ -107,6 +111,22 @@
                         $('#harga').removeClass('is-invalid');
                         $('#harga').addClass('is-valid');
                     }
+                    if (err.error_status) {
+                        $('.error-status').html(err.error_status);
+                        $('#status').addClass('is-invalid');
+                    } else {
+                        $('.error-status').html('');
+                        $('#status').removeClass('is-invalid');
+                        $('#status').addClass('is-valid');
+                    }
+                    if (err.error_kategori) {
+                        $('.error-kategori').html(err.error_kategori);
+                        $('#kategori').addClass('is-invalid');
+                    } else {
+                        $('.error-kategori').html('');
+                        $('#kategori').removeClass('is-invalid');
+                        $('#kategori').addClass('is-valid');
+                    }
 
                 }
                 if (response.success) {
@@ -125,5 +145,14 @@
             }
         });
         return false
+    })
+
+
+    $(document).ready(function() {
+        $("#status").select2({
+            theme: "bootstrap-5",
+            dropdownParent: $('#my-modal')
+        });
+
     })
 </script>
