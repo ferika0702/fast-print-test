@@ -13,20 +13,6 @@ class Produk extends ResourceController
      *
      * @return mixed
      */
-    
-    // public function index()
-    // {
-    //     $modelProduk = new ProdukModel();
-    //     $produk = $modelProduk->findAll();
-
-    //     $data = [
-    //         'produk' => $produk
-    //     ];
-    //     // $apiUrl = 'https://recruitment.fastprint.co.id/tes/api_tes_programmer';
-    //     // $data = json_decode(file_get_contents($apiUrl));
-
-    //     return view('produk/index', $data);
-    // }
 
     public function index()
     {
@@ -73,8 +59,6 @@ class Produk extends ResourceController
         $viewData = [
             'produk' => $data
         ];
-
-        // var_dump($viewData);
 
         return view('produk/data-produk', $viewData);
     }
